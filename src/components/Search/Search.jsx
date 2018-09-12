@@ -24,6 +24,7 @@ type State = {|
 class Search extends Component<Props, State> {
   static defaultProps = {
     placeholder: 'Search...',
+    value: '',
   };
   constructor(props: Props) {
     super(props);
@@ -35,9 +36,7 @@ class Search extends Component<Props, State> {
   componentWillReceiveProps(nextProps: Props) {
     const { value } = nextProps;
 
-    if (value || this.props.value) {
-      this.setState({ text: value });
-    }
+    this.setState({ text: value });
   }
 
   onChange = (event: {target: {value: string}}): void => {
